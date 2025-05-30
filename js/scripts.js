@@ -1009,7 +1009,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let btnVehicles = document.getElementById('searchVehicles');
 
 
-
     buttonAction.addEventListener('click', lifeStages)
     button.addEventListener('click', calculateAverage)
     buttonDayAndWeek.addEventListener('click', daysAndMonths)
