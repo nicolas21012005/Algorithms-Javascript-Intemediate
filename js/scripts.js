@@ -955,13 +955,16 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     function movies() {
         let search = prompt('Ingrese el genero de la película que desea buscar');
+        let found = false;
         for (let i = 0; i < peliculas.length; i++) {
             if (search.toLowerCase() === peliculas[i].genero.toLowerCase()) {
-                alert(`Pelicula encontrada: ${peliculas[i].titulo},\n Género: ${peliculas[i].genero},\n Año: ${peliculas[i].año}`);
-                return;
-            } else {
-                alert('Película no encontrada');
+                alert(`Película encontrada:\nTítulo: ${peliculas[i].titulo}\nGénero: ${peliculas[i].genero}\nAño: ${peliculas[i].año}`);
+                found = true;
+                break;
             }
+        }
+        if (!found) {
+            alert('Película no encontrada');
         }
     }
     function showMoviesOver2000() {
