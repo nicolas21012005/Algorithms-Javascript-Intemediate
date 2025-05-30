@@ -992,19 +992,24 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     function searchVehicle() {
         let placa = prompt('Ingrese la placa del vehículo');
+        if (!placa || placa.trim() === '') {
+            alert('Por favor ingrese una placa válida');
+            return;
+        }
+        placa = placa.toUpperCase();
+        let found = false;
         for (let i = 0; i < vehicles.length; i++) {
-            if (vehicles[i].placa.toUpperCase() === placa.toUpperCase()) {
-                alert(`Vehículo encontrado: \n Placa: ${vehicles[i].placa}, \n Marca: ${vehicles[i].marca}, \n Modelo: ${vehicles[i].modelo}`);
-                return;
-            } else if (placa.toUpperCase() === '') {
-                alert('Por favor ingrese una placa válida')
-                return;
-            } else if (placa.toUpperCase() !== vehicles[i].placa.toUpperCase()) {
-                alert('Vehículo no encontrado');
-                break
+            if (vehicles[i].placa.toUpperCase() === placa) {
+                alert(`Vehículo encontrado: \nPlaca: ${vehicles[i].placa}, \nMarca: ${vehicles[i].marca}, \nModelo: ${vehicles[i].modelo}`);
+                found = true;
+                break;
             }
         }
+        if (!found) {
+            alert('Vehículo no encontrado');
+        }
     }
+
 
     let btnVehicles = document.getElementById('searchVehicles');
 
