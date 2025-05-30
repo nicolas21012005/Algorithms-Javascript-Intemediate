@@ -2137,18 +2137,19 @@ const peliculas = [
 ];
 
 function movies() {
-  let search = prompt('Ingrese el género de la película que desea buscar');
-  let found = false;
-  for (let i = 0; i &lt; peliculas.length; i++) {
-    if (search.toLowerCase() === peliculas[i].genero.toLowerCase()) {
-      alert(`Película encontrada: ${peliculas[i].titulo},\nGénero: ${peliculas[i].genero},\nAño: ${peliculas[i].año}`);
-      found = true;
-      break;
+    let search = prompt('Ingrese el genero de la película que desea buscar');
+    let found = false;
+
+    for (let i = 0; i < peliculas.length; i++) {
+        if (search.toLowerCase() === peliculas[i].genero.toLowerCase()) {
+            alert(`Película encontrada:\nTítulo: ${peliculas[i].titulo}\nGénero: ${peliculas[i].genero}\nAño: ${peliculas[i].año}`);
+            found = true;
+            break;
+        }
     }
-  }
-  if (!found) {
-    alert('Película no encontrada');
-  }
+    if (!found) {
+        alert('Película no encontrada');
+    }
 }
 
 function showMoviesOver2000() {

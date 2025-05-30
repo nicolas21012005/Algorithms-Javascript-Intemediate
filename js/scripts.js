@@ -951,23 +951,32 @@ document.addEventListener('DOMContentLoaded', function () {
         { titulo: 'Inception', genero: 'Ciencia Ficción', año: 2010 },
         { titulo: 'Titanic', genero: 'Romance', año: 1997 },
         { titulo: 'Interstellar', genero: 'Ciencia Ficción', año: 2014 },
-        { titulo: 'Coco', genero: 'Animación', año: 2017 },
+        { titulo: 'Coco', genero: 'Animacion', año: 2017 },
     ];
     function movies() {
         let search = prompt('Ingrese el genero de la película que desea buscar');
+        let found = false;
         for (let i = 0; i < peliculas.length; i++) {
             if (search.toLowerCase() === peliculas[i].genero.toLowerCase()) {
-                alert(`Pelicula encontrada: ${peliculas[i].titulo},\n Género: ${peliculas[i].genero},\n Año: ${peliculas[i].año}`);
-                return;
-            } else {
-                alert('Película no encontrada');
+                alert(`Película encontrada:\nTítulo: ${peliculas[i].titulo}\nGénero: ${peliculas[i].genero}\nAño: ${peliculas[i].año}`);
+                found = true;
+                break;
             }
+        }
+        if (!found) {
+            alert('Película no encontrada');
         }
     }
     function showMoviesOver2000() {
-        for (let i = 0; i < peliculas.length; i++) { }
-        if (peliculas[i].año > 2000) {
-            alert(`Las peliculas encontradas fueron las siguientes \n Película: ${peliculas[i].titulo}, Género: ${peliculas[i].genero}, Año: ${peliculas[i].año} \n`);
+        let peliculasFiltradas = peliculas.filter(p => p.año > 2000);
+        if (peliculasFiltradas.length === 0) {
+            alert('No hay películas hechas después del año 2000.');
+        } else {
+            let mensaje = 'Películas hechas después del año 2000:\n';
+            peliculasFiltradas.forEach(p => {
+                mensaje += `Película: ${p.titulo}, Género: ${p.genero}, Año: ${p.año}\n`;
+            });
+            alert(mensaje);
         }
     }
     let showMovies = document.getElementById('showMovies');
@@ -1029,8 +1038,8 @@ document.addEventListener('DOMContentLoaded', function () {
     btnContacts.addEventListener('click', registerContact)
     btnSearch.addEventListener('click', searchContact)
     btnProducts.addEventListener('click', addProductToCart)
-    showMovies.addEventListener('click', movies)
-    searchMovies.addEventListener('click', showMoviesOver2000)
+    showMovies.addEventListener('click', showMoviesOver2000)
+    searchMovies.addEventListener('click', movies)
     btnVehicles.addEventListener('click', searchVehicle)
     btnLoginUser.addEventListener('click', iniciarSesionDinamico)
 });
